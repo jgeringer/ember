@@ -1,0 +1,8 @@
+{{!--{{yield}}--}}
+<span style="{{if isImportant 'font-weight:bold'}}" {{action "toggleDetails"}}>
+    {{#if showDetails}}
+        ${{itemPrice}} / ${{orderPrice}}
+    {{else}}
+        {{percentage}}%
+    {{/if}}
+</span>

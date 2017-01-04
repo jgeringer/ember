@@ -1,3 +1,38 @@
 <p>Your order is ready!</p>
 <p>Order #{{model.id}}</p>
 <p>for {{model.name}}</p>
+<table>
+    <thead>
+        <tr>
+            <td>Item</td>
+            <td>Qty</td>
+            <td>Unit</td>
+            <td>Cost</td>
+            <td>Cost%</td>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each model.items as |lineItem|}}
+        <tr>
+            <td>{{lineItem.title}}</td>
+            <td>{{lineItem.quantity}}</td>
+            <td>${{lineItem.unitPrice}}/ea</td>
+            <td>${{lineItem.price}}</td>
+            <td>
+                {{item-percentage itemPrice=lineItem.price orderPrice=model.price}}
+                {{!--renders the "item-percented" component--}}
+                {{!--passes the item and order prices to that component--}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>TOTAL</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>${{model.price}}</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tfoot>
+</table>

@@ -1,0 +1,20 @@
+{{!--Mapping an Action: action: actionName, on:eventName. 
+Below: 
+Fires the createOrder action. Any extra params (model) are passed to the triggered action as params.
+On: listen for the form submit event
+--}}
+<form {{action "createOrder" model on="submit"}}> 
+    <label for="name">Name</label>
+    {{!--<input type="text" id="name">--}}
+    {{!--To bind properties with input, just replace the brackets handlebars...--}}
+    {{input type="text" id="name" value=model.name}}
+    {{#each model.items as |item|}}
+        <label>
+            {{item.product.title}}
+            {{input type="number" min="0" value=item.quantity}}
+            <button {{action "addToItemQuantity" item 10}}>+10</button>
+            {{!--Click is the default trigger for an {{action}}, so no need to specify it above. passing in two arguments into the action: item and ammount to increment--}}
+        </label>
+    {{/each}}
+    <input type="submit" id="Order">
+</form>

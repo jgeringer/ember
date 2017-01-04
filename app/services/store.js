@@ -51,5 +51,22 @@ export default Ember.Service.extend({
     
     getProducts(){
         return products; //this makes the products array at the top public.
+    },
+
+    //to manage a new order's information, we need an empty order record to work with...
+    newOrder(){
+        return Order.create({
+            items: products.map((product) => {  //for each product in the products array, create a new LineItem per product
+                return LineItem.create({
+                    product: product
+                });
+            })
+        });
+    },
+
+    saveOrder(order){
+        order.set('id', 9999);  //pretending we are talking to a server and setting an id.
+        orders.pushObject(order);   //add it to the orders array, and triggers value-changed events.
     }
+
 });
