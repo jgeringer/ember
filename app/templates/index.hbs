@@ -1,0 +1,23 @@
+<p>Hello from index.</p>
+
+<p>{{#link-to "orders" tagName="div" class="customCSSclassNameGoesHere"}}Click to View Orders{{/link-to}} <br />
+This link does not reload the orders page. The link-to must match the Route name as defined in the map route name.</p>
+
+
+
+<div class="card">
+    <h1>Order Today!</h1>
+    <p class="card-content">Our online store helps...</p>{{#link-to "orders"}}Order Today!{{/link-to}}
+</div>
+
+<div class="grid group">
+    {{#each model as |product| }}
+        <div class="product-media">
+            <img src="{{product.imageUrl}}" />
+        </div>
+        <div class="product-content">
+            <h2>{{product.title}}: <b>${{product.price}}</b></h2>
+            <p>{{product.description}}</p>
+        </div>
+    {{/each}}
+</div>

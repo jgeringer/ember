@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>Ember</title>
+    </head>
+    <body>
+
+        <ul>
+            <li>1st: Need Ember CLI: Node package</li>
+            <li>npm install -g ember-cli</li>
+            <li>Model-View-Controller (MVC)</li>
+        </ul>
+
+        <p>Console...</p>
+        <ul>
+            <li>ember version</li>
+            <li>ember help</li>
+            <li>ember new <app-name> <options...> //This creates a blueprint</li>
+            <li>ember new woodland //Creates an ember app named woodland using the blueprint</li>
+            <li>cd woodland</li>
+            <li>CLI: ember serve //spins up a livereaload server on localhost</li>
+            <li>CLI: ember server //this seems to work as well</li>
+        </ul>
+
+        <p>2.1: Templates and the Router</p>
+        <ul>
+            <li>Most work will be done in the /app directory</li>
+            <li>ember generate template application //creates hbs template</li>
+            <li>creates a template under: /app/templates/application.hbs</li>
+            <li>always have an {{outlet}} expression in the application template. this is where templates go.</li>
+            <li>then add an index file... app/templates/index.hbs</li>
+            <li>add an order.hbs file</li>
+            <li>need to use a router to get this template to show. a router manages the application state and maps it</li>
+            <li>configure the router by opeing the /app/router.js file</li>
+            <li>Router.map(function() { }); //this is where we define all app endpoints here</li>
+            <li>Additional Helpers: Ember ships with many other Handlebars helpers for logic. debugger, each, if, input, link-to, log, textarea, unless</li>
+            <li></li>
+        </ul>
+
+        <p>2.6: Routes</p>
+        <ul>
+            <li>Router > Routes > Templates</li>
+            <li>Router talks to Routes</li>
+            <li>Routes talks to Templates</li>
+            <li>Router: Manages state</li>
+            <li>Routes: Collects needed data and renders templates</li>
+            <li>Templates: Defines HTML</li>
+            <li>Auto-generated Routes: app/router.js > this.route('orders');
+            <li>Generating a route</li>
+            <li>CLI: ember generate route <route-name></li>
+            <li>CLI: ember generate route myroutetest //created a /app/routes/myroutest.js, /app/templates/myroutest.hbs, also updated the router.js file with this new route name</li>
+            <li>By doing this, it extends the route so you can do something custom with this route</li>
+            <li>{{#each model as |order| }}</li>
+            <li>Order ID: {{order.id}} | {{order.name}}</li>
+            <li>Common Used Route Hooks: 
+                activate    (triggered when navigation enters the route), 
+                deactivate  (triggered when navigation leaves the route), 
+                model       (returns model data to use in the route and template), 
+                redirect    (sending user to a different route)</li>
+            <li>this.route('order', {path: '/orders/:order_id'}); //creates a single order detail page (":" is a dynamic segment)</li>
+            <li>{{#link-to "order" order}} //"order" = is the route name. order = order object.</li>
+        </ul>
+
+        <p>3: Models and Services</p>
+        <ul>
+            <li>Generate a Service: aka, singletons. these are available throughout your app</li>
+            <li>Services are good for: Centralized logging, User sessions, WebSocket management, data repos</li>
+            <li>CLI: ember generate service <service-name></li>
+            <li>Models: represent the underlying data of the application.</li>
+            <li>Defined in app/models</li>
+            <li>Interacting with Models: Properties are read and set using get() and set()</li>
+        </ul>
+
+    <script>
+
+    </script>
+
+    </body>
+</html>
